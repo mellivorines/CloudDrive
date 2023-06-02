@@ -45,6 +45,24 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Exe)
             packageName = "CloudDrive"
             packageVersion = "1.0.0"
+            macOS{
+                // a version for all macOS distributables
+                packageVersion = "1.0.0"
+                // a version only for the dmg package
+                dmgPackageVersion = "1.0.0"
+                // a version only for the pkg package
+                pkgPackageVersion = "1.0.0"
+                // 显示在菜单栏、“关于”菜单项、停靠栏等中的应用程序名称
+                dockName = "CloudDrive"
+                // a build version for all macOS distributables
+                packageBuildVersion = "1.0.0"
+                // a build version only for the dmg package
+                dmgPackageBuildVersion = "1.0.0"
+                // a build version only for the pkg package
+                pkgPackageBuildVersion = "1.0.0"
+                // 设置图标
+                iconFile.set(project.file("launcher/icon.icns"))
+            }
         }
     }
 }
