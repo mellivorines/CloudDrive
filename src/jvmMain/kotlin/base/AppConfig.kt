@@ -15,7 +15,7 @@ object AppConfig {
     val topBarHeight = 50.dp
     val windowMinWidth = 1150.dp
     val windowMinHeight = 670.dp
-    var fullScreen = false
+    var fullscreen = false
 
     // 应用缓存目录
     val cacheRootDir = System.getProperty("user.home") + File.separator + "Library" + File.separator + "CloudDrive"

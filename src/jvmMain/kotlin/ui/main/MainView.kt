@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import ui.main.layout.MainLeftMenu
+import ui.main.layout.MainRightContainer
 
 
 /**
@@ -19,7 +20,7 @@ fun MainView() {
         Box(modifier = Modifier.weight(1f)){
             Row(modifier = Modifier.fillMaxSize()) {
                 MainLeftMenu()
-//                MainRightContainer()
+                MainRightContainer()
             }
         }
     }
