@@ -13,8 +13,8 @@ import java.io.File
  */
 object AppConfig {
     val topBarHeight = 50.dp
-    val windowMinWidth = 1150.dp
-    val windowMinHeight = 670.dp
+    val windowMinWidth = 1000.dp
+    val windowMinHeight = 640.dp
     var fullscreen = false
 
     // 应用缓存目录

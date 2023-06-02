@@ -2,23 +2,31 @@ package ui.main.layout
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.remember
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.PointerEventType
+import androidx.compose.ui.input.pointer.onPointerEvent
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import base.AppConfig
+import model.CDButtonInfo
 import model.CDMenuInfo
+import model.CDMenuInfos.CD_BUTTON_INFOS
+import model.CDMenuInfos.CD_MENU_INFOS_1
+import model.CDMenuInfos.CD_MENU_INFOS_2
 import moe.tlaster.precompose.navigation.NavOptions
 import moe.tlaster.precompose.navigation.Navigator
 import router.CDNavigatorManager
-import router.RouterUrls
+import router.CDNavigatorManager.navigator
+import ui.customcomponents.progressbar
 import ui.theme.AppColorsProvider
 
 
@@ -48,18 +56,65 @@ fun MainLeftMenu() {
  */
 @Composable
 private fun CDMenu(navigator: Navigator) {
-    val mutableListOf = listOf(
-        CDMenuInfo("icons/menu/menu_file.svg", "文件", RouterUrls.URL_FILE),
-        CDMenuInfo("icons/menu/menu_image.svg", "相册", RouterUrls.URL_IMAGE),
-        CDMenuInfo("icons/menu/menu_lock.svg", "密码箱", RouterUrls.URL_LOCK),
-        CDMenuInfo("icons/menu/menu_recycleBin.svg", "回收站", RouterUrls.URL_RECYCLE_BIN),
+    val cdMenuInfos = CD_MENU_INFOS_1
+    val cdMenuInfos1 = CD_MENU_INFOS_2
+    val cdButtonInfos = CD_BUTTON_INFOS
+    //第一组菜单
+    Items(cdMenuInfos)
+    //分割线
+    Divider(
+        Modifier.height(15.dp).padding(top = 12.dp, end = 10.dp),
+        color = AppColorsProvider.current.card,
+        thickness = 1.dp,
+        startIndent = 10.dp
     )
-    val list = remember { mutableStateListOf<String>() }
+    //第二组菜单
+    Items(cdMenuInfos1)
+    //按钮
+    buttonForPhoneOrIPad(cdButtonInfos)
+
+    progressbar(value = 10f)
+}
+
+@Composable
+fun buttonForPhoneOrIPad(cdButtonInfos: List<CDButtonInfo>) {
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.height(42.dp).absolutePadding(left = 10.dp)
+    )
+    {
+        cdButtonInfos.forEach{cdButtonInfo ->
+
+            Button(
+                modifier = Modifier.absolutePadding(left = 10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = AppColorsProvider.current.background,
+                    contentColor = AppColorsProvider.current.firstText
+                ),
+                border = BorderStroke(width = 1.dp, color = AppColorsProvider.current.card),
+                onClick = { }
+            ) {
+                Icon(
+                    painterResource(cdButtonInfo.iconPath),
+                    contentDescription = cdButtonInfo.title,
+                    modifier = Modifier.size(20.dp),
+                    tint = AppColorsProvider.current.firstIcon,
+                )
+                Text(cdButtonInfo.title)
+
+            }
+        }
+    }
+}
+
+@Composable
+fun Items(list: List<CDMenuInfo>) {
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState()),
+        modifier = Modifier.verticalScroll(rememberScrollState()).padding(top = 10.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        mutableListOf.forEach { menu ->
+        list.forEach { menu ->
             CDMenuItem(menu.iconPath, menu.title) {
                 while (navigator.canGoBack) {
                     navigator.popBackStack()
@@ -74,35 +129,65 @@ private fun CDMenu(navigator: Navigator) {
 /**
  * 菜单项框
  */
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
 @Composable
 private fun CDMenuItem(
     iconPath: String,
     title: String,
-    selectedMenuTag: String? = null,
-    markLogoPath: String? = null,
-    type: Int = 0,
     onClick: (title: Any) -> Unit
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth().height(50.dp).padding(horizontal = 15.dp).onClick {
+        modifier = Modifier.fillMaxWidth().height(42.dp).absolutePadding(left = 15.dp, right = 15.dp).onClick {
             onClick(title)
         },
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Icon(
-            painterResource(iconPath),
-            contentDescription = title,
-            modifier = Modifier.size(20.dp),
-            tint = AppColorsProvider.current.firstIcon
-        )
-        Text(
-            text = title,
-            modifier = Modifier.weight(1f).padding(horizontal = 20.dp),
-            fontSize = 15.sp,
-            maxLines = 1,
-            color = AppColorsProvider.current.firstText,
-            overflow = TextOverflow.Ellipsis
-        )
+        val background = AppColorsProvider.current.background
+        val card = AppColorsProvider.current.card
+        var color by remember { mutableStateOf(background) }
+        var active by remember { mutableStateOf(false) }
+        Box(
+            modifier = Modifier
+                .wrapContentSize(Alignment.Center)
+                .fillMaxSize()
+                .clip(RoundedCornerShape(15))//设置盒子圆角
+                .background(color = color)//设置背景颜色
+                .onPointerEvent(PointerEventType.Enter) {//鼠标移入改变背景颜色
+                    active = true
+                    color = card
+                }
+                .onPointerEvent(PointerEventType.Exit) {//鼠标移出改变背景颜色
+                    active = false
+                    color = background
+                }
+        ) {
+            Icon(
+                painterResource(iconPath),
+                contentDescription = title,
+                modifier = Modifier.let {
+                    if (title == "最常使用" || title == "我的资料") {
+                        it.absolutePadding(left = 60.dp, right = 20.dp, top = 10.dp).size(20.dp)
+                    } else {
+                        it.absolutePadding(left = 20.dp, right = 20.dp, top = 10.dp).size(20.dp)
+                    }
+                },
+                tint = AppColorsProvider.current.firstIcon
+            )
+            Text(
+                text = title,
+                modifier = Modifier.let {
+                    if (title == "最常使用" || title == "我的资料") {
+                        it.absolutePadding(left = 100.dp, right = 20.dp, top = 10.dp)
+                    } else {
+                        it.absolutePadding(left = 60.dp, right = 20.dp, top = 10.dp)
+                    }
+                },
+                fontSize = 15.sp,
+                maxLines = 1,
+                color = AppColorsProvider.current.firstText,
+                overflow = TextOverflow.Ellipsis
+            )
+        }
+
     }
 }

@@ -1,6 +1,8 @@
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import base.AppConfig
@@ -19,14 +21,18 @@ import java.io.File
 
 fun main() = application {
     initImageLoader()
-    val windowState = rememberWindowState(size = DpSize(AppConfig.windowMinWidth, AppConfig.windowMinHeight))
+    //设置窗口最小尺寸以及初始位置
+    val windowState = rememberWindowState(size = DpSize(AppConfig.windowMinWidth, AppConfig.windowMinHeight), position = WindowPosition.Aligned(
+        Alignment.Center))
     PreComposeWindow(
         state = windowState,
         onCloseRequest = ::exitApplication,
         undecorated = EnvUtil.isWindows(),
         title = ""
     ) {
+        //设置最小尺寸
         window.minimumSize = Dimension(AppConfig.windowMinWidth.value.toInt(), AppConfig.windowMinHeight.value.toInt())
+        //设置主窗口只保留关闭、最小化、最大化系统操作
         window.rootPane.apply {
             rootPane.putClientProperty("apple.awt.fullWindowContent", true)
             rootPane.putClientProperty("apple.awt.transparentTitleBar", true)
