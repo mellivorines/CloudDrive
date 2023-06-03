@@ -105,7 +105,7 @@ fun ListItemView(item: ListItem) {
             modifier = Modifier.width(AppConfig.windowMinWidth/4)
         ) {
             Icon(
-                if (item.type != 1)painterResource("icons/content/folder.svg") else painterResource("icons/menu/menu_file.svg"),
+                if (item.type != 1)painterResource("icons/content/file/folder.svg") else painterResource("icons/menu/menu_file.svg"),
                 contentDescription = "文件类型图标",
                 modifier = Modifier.width((AppConfig.windowMinWidth/4) * 1/4),
                 tint = AppColorsProvider.current.firstIcon
