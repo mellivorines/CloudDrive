@@ -9,7 +9,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.onPointerEvent
 import androidx.compose.ui.res.painterResource
@@ -59,35 +58,45 @@ private fun CDMenu(navigator: Navigator) {
     val cdMenuInfos = CD_MENU_INFOS_1
     val cdMenuInfos1 = CD_MENU_INFOS_2
     val cdButtonInfos = CD_BUTTON_INFOS
-    //第一组菜单
-    Items(cdMenuInfos)
-    //分割线
-    Divider(
-        Modifier.height(15.dp).padding(top = 12.dp, end = 10.dp),
-        color = AppColorsProvider.current.card,
-        thickness = 1.dp,
-        startIndent = 10.dp
-    )
-    //第二组菜单
-    Items(cdMenuInfos1)
-    //按钮
-    buttonForPhoneOrIPad(cdButtonInfos)
 
-    progressbar(value = 10f)
+    Column(
+        modifier = Modifier.verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.SpaceEvenly,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        //第一组菜单
+        Items(cdMenuInfos)
+        //分割线
+        Divider(
+            Modifier.height(15.dp).padding(top = 12.dp, end = 10.dp),
+            color = AppColorsProvider.current.card,
+            thickness = 1.dp,
+            startIndent = 10.dp
+        )
+        //第二组菜单
+        Items(cdMenuInfos1)
+        //按钮
+        buttonForPhoneOrIPad(cdButtonInfos)
+        //空间进度条
+        progressbar(value = 0.3f)
+    }
+
+
 }
 
+/**
+ * 自定义按钮
+ */
 @Composable
 fun buttonForPhoneOrIPad(cdButtonInfos: List<CDButtonInfo>) {
     Row(
-        horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.height(42.dp).absolutePadding(left = 10.dp)
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        modifier = Modifier.height(42.dp)
     )
     {
-        cdButtonInfos.forEach{cdButtonInfo ->
-
+        for (buttonInfo in cdButtonInfos) {
             Button(
-                modifier = Modifier.absolutePadding(left = 10.dp),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = AppColorsProvider.current.background,
                     contentColor = AppColorsProvider.current.firstText
@@ -96,13 +105,18 @@ fun buttonForPhoneOrIPad(cdButtonInfos: List<CDButtonInfo>) {
                 onClick = { }
             ) {
                 Icon(
-                    painterResource(cdButtonInfo.iconPath),
-                    contentDescription = cdButtonInfo.title,
+                    painterResource(buttonInfo.iconPath),
+                    contentDescription = buttonInfo.title,
                     modifier = Modifier.size(20.dp),
                     tint = AppColorsProvider.current.firstIcon,
                 )
-                Text(cdButtonInfo.title)
-
+                Text(buttonInfo.title)
+            }
+            if (buttonInfo.title != "iPad端") {
+                Spacer(
+                    modifier = Modifier.width(10.dp).height(10.dp)
+                        .background(AppColorsProvider.current.background)
+                )
             }
         }
     }
@@ -111,7 +125,7 @@ fun buttonForPhoneOrIPad(cdButtonInfos: List<CDButtonInfo>) {
 @Composable
 fun Items(list: List<CDMenuInfo>) {
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState()).padding(top = 10.dp),
+        modifier = Modifier.padding(top = 10.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         list.forEach { menu ->

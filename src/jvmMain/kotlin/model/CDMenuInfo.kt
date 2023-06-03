@@ -15,8 +15,8 @@ data class CDButtonInfo(val iconPath: String, var title: String)
 object CDMenuInfos{
     val CD_MENU_INFOS_1 = listOf(
         CDMenuInfo("icons/menu/menu_file.svg", "文件", RouterUrls.URL_FILE),
-        CDMenuInfo("icons/menu/menu_recent.svg", "最常使用", RouterUrls.URL_FILE),
-        CDMenuInfo("icons/menu/menu_material.svg", "我的资料", RouterUrls.URL_FILE),
+        CDMenuInfo("icons/menu/menu_recent.svg", "最常使用", RouterUrls.URL_RECENT),
+        CDMenuInfo("icons/menu/menu_material.svg", "我的资料", RouterUrls.URL_MATERIAL),
         CDMenuInfo("icons/menu/menu_image.svg", "相册", RouterUrls.URL_IMAGE),
         CDMenuInfo("icons/menu/menu_star.svg", "收藏夹", RouterUrls.URL_IMAGE),
         CDMenuInfo("icons/menu/menu_lock.svg", "密码箱", RouterUrls.URL_LOCK),

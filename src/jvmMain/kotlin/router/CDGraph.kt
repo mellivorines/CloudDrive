@@ -7,10 +7,7 @@ import androidx.compose.runtime.remember
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.navigation.transition.NavTransition
-import ui.pages.FilePage
-import ui.pages.ImagePage
-import ui.pages.LockPage
-import ui.pages.RecycleBinPage
+import ui.pages.*
 
 
 /**
@@ -41,6 +38,12 @@ fun CDGraph(){
     ) {
         scene(RouterUrls.URL_FILE) {
             FilePage()
+        }
+        scene(RouterUrls.URL_RECENT) {
+            RecentPage()
+        }
+        scene(RouterUrls.URL_MATERIAL) {
+            MaterialPage()
         }
         scene(RouterUrls.URL_IMAGE) {
             ImagePage()

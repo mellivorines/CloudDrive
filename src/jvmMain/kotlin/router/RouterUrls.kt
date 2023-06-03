@@ -15,6 +15,15 @@ object RouterUrls{
     const val URL_FILE = "url_file"
 
     /**
+     * 文件
+     */
+    const val URL_RECENT = "url_recent"
+    /**
+     * 文件
+     */
+    const val URL_MATERIAL = "url_material"
+
+    /**
      * 相册
      */
     const val URL_IMAGE = "url_image"
