@@ -60,7 +60,7 @@ private fun CDMenu(navigator: Navigator) {
     val cdButtonInfos = CD_BUTTON_INFOS
 
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState()),
+        modifier = Modifier.verticalScroll(rememberScrollState()),//设置可滑动
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

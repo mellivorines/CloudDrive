@@ -48,10 +48,22 @@ fun CDGraph(){
         scene(RouterUrls.URL_IMAGE) {
             ImagePage()
         }
+        scene(RouterUrls.URL_STAR) {
+            ImagePage()
+        }
         scene(RouterUrls.URL_LOCK) {
             LockPage()
         }
+        scene(RouterUrls.URL_COLLECT) {
+            ImagePage()
+        }
         scene(RouterUrls.URL_RECYCLE_BIN) {
+            RecycleBinPage()
+        }
+        scene(RouterUrls.URL_TRANSMISSION) {
+            RecycleBinPage()
+        }
+        scene(RouterUrls.URL_CLOUD) {
             RecycleBinPage()
         }
     }
