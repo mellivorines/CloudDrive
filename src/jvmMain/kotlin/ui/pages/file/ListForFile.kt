@@ -5,7 +5,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Share
@@ -14,10 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import base.AppConfig
 import model.CDMenuInfos
 import ui.pages.PageDropdownMenuItem
 import ui.theme.AppColorsProvider
@@ -38,7 +35,7 @@ fun ListForFile() {
         verticalAlignment = Alignment.CenterVertically
     ) {
         val cdPageAddDropdownMenu = CDMenuInfos.CD_PAGE_ADD_DROPDOWN_MENU
-        Box{
+        Box {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
@@ -60,7 +57,7 @@ fun ListForFile() {
             }
 
         }
-        Box{
+        Box {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -106,10 +103,10 @@ fun ListForFile() {
 
                 //视图切换按钮
                 Button(
-                    onClick = {  },
+                    onClick = { },
                     modifier = Modifier
                         .background(color = AppColorsProvider.current.card, shape = RoundedCornerShape(10.dp)),
-                            shape = RoundedCornerShape(10.dp),
+                    shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.outlinedButtonColors(
                         backgroundColor = AppColorsProvider.current.card,
                         contentColor = AppColorsProvider.current.firstText

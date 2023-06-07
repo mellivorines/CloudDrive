@@ -59,7 +59,7 @@ fun ListHeader(sortColumn: (String) -> Unit, sortDescend: Boolean = false) {
         Box {
             SortableColumn("创建时间", sortColumn, "createdTime", sortDescend)
         }
-        Box{
+        Box {
             SortableColumn("大小", sortColumn, "size", sortDescend)
         }
     }
@@ -193,7 +193,7 @@ fun ListItemView(item: ListItem, onClick: (title: Any) -> Unit) {
                 var showChange by remember { mutableStateOf(false) }
                 Box(
                     modifier = Modifier.width(50.dp)
-                ){
+                ) {
                     Icon(
                         if (item.type != 1) painterResource("icons/content/file/folder.svg") else painterResource("icons/menu/menu_file.svg"),
                         contentDescription = "文件类型图标",
@@ -202,7 +202,7 @@ fun ListItemView(item: ListItem, onClick: (title: Any) -> Unit) {
                 }
                 Box(
                     modifier = Modifier.width(100.dp)
-                ){
+                ) {
                     Text(
                         text = item.name,
                         color = AppColorsProvider.current.firstText
@@ -212,7 +212,7 @@ fun ListItemView(item: ListItem, onClick: (title: Any) -> Unit) {
                 //更多按钮设置（moreOperations）
                 Box(
                     modifier = Modifier.width(50.dp)
-                ){
+                ) {
                     IconButton(
                         { showChange = !showChange },
                     ) {

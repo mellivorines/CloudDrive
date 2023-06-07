@@ -20,7 +20,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import base.AppConfig
 import model.CDMenuInfos
 import ui.pages.PageDropdownMenuItem
 import ui.theme.AppColorsProvider
@@ -41,7 +40,7 @@ fun FilePageTools() {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Box{
+        Box {
             Text(
                 text = "文件",
                 fontSize = 18.sp,
@@ -50,7 +49,7 @@ fun FilePageTools() {
                 color = AppColorsProvider.current.firstText
             )
         }
-        Box{
+        Box {
             Row(
                 modifier = Modifier.width(200.dp).absolutePadding(left = 10.dp),
                 verticalAlignment = Alignment.CenterVertically,
