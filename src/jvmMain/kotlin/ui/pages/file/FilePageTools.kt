@@ -7,7 +7,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
@@ -15,11 +14,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import model.CDMenuInfos
 import ui.pages.PageDropdownMenuItem
 import ui.theme.AppColorsProvider
@@ -35,20 +31,14 @@ import ui.theme.AppColorsProvider
 @Composable
 fun FilePageTools() {
     val cdPageAddDropdownMenu = CDMenuInfos.CD_PAGE_ADD_DROPDOWN_MENU
+    val currentPath = remember { mutableStateListOf("文件","ada","duahda","ufgasd") }
+
     Row(
         modifier = Modifier.fillMaxWidth().padding(20.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Box {
-            Text(
-                text = "文件",
-                fontSize = 18.sp,
-                fontStyle = FontStyle.Normal,
-                fontWeight = FontWeight.Bold,
-                color = AppColorsProvider.current.firstText
-            )
-        }
+        FolderBreadcrumb(currentPath) { }
         Box {
             Row(
                 modifier = Modifier.width(200.dp).absolutePadding(left = 10.dp),
