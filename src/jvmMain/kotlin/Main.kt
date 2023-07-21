@@ -27,7 +27,7 @@ fun main() = application {
     PreComposeWindow(
         state = windowState,
         onCloseRequest = ::exitApplication,
-        undecorated = EnvUtil.isWindows(),
+        undecorated = isMacOSX(),
         title = ""
     ) {
         //设置最小尺寸
@@ -54,3 +54,9 @@ fun App() {
 private fun initImageLoader() {
     ImageLoader.configuration(rootDirectory = File(AppConfig.cacheRootDir))
 }
+
+private fun isMacOSX(): Boolean {
+    val osName = System.getProperty("os.name")
+    return "OS X" == osName || "Mac OS X" == osName
+}
+
