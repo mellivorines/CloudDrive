@@ -197,7 +197,7 @@ fun ListItemView(item: ListItem, onClick: (title: Any) -> Unit) {
                     Icon(
                         if (item.type != 1) painterResource("icons/content/file/folder.svg") else painterResource("icons/menu/menu_file.svg"),
                         contentDescription = "文件类型图标",
-                        tint = Color.Blue
+                        tint = Color(0xFF647DfD)
                     )
                 }
                 Box(

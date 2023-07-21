@@ -1,5 +1,6 @@
 package ui.pages.file
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -11,6 +12,8 @@ import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.DarkGray
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -65,13 +68,14 @@ fun ListForFile() {
                 //选择按钮
                 var showChange by remember { mutableStateOf(false) }
                 //按修改时间排序
-                Button(
+                TextButton(
                     onClick = { showChange = !showChange },
                     shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.outlinedButtonColors(
                         backgroundColor = AppColorsProvider.current.card,
                         contentColor = AppColorsProvider.current.firstText
-                    )
+                    ),
+                    border = BorderStroke(2.dp, AppColorsProvider.current.topBarColor)
                 ) {
                     Icon(
                         Icons.Default.Share,
@@ -102,7 +106,7 @@ fun ListForFile() {
                 }
 
                 //视图切换按钮
-                Button(
+                TextButton(
                     onClick = { },
                     modifier = Modifier
                         .background(color = AppColorsProvider.current.card, shape = RoundedCornerShape(10.dp)),
@@ -110,7 +114,8 @@ fun ListForFile() {
                     colors = ButtonDefaults.outlinedButtonColors(
                         backgroundColor = AppColorsProvider.current.card,
                         contentColor = AppColorsProvider.current.firstText
-                    )
+                    ),
+                    border = BorderStroke(2.dp, AppColorsProvider.current.topBarColor)
                 ) {
                     Icon(
                         Icons.Default.Search,

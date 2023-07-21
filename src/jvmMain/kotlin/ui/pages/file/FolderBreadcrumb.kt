@@ -5,8 +5,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,22 +34,11 @@ fun FolderBreadcrumb(currentPath: List<String>, onClick: () -> Unit) {
             for (index in currentPath.indices) {
                 val folderName = currentPath[index]
                 TextButton(
-
-                    modifier = Modifier
-                        .height(40.dp),
-
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color.Transparent
-                    ),
-
+                    modifier = Modifier.height(40.dp),
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
                     shape = AbsoluteRoundedCornerShape(10.dp, 30.dp, 5.dp, 10.dp),
-                    onClick = { }
-//                    {
-                    //删除当前点击对象的所有最后面元素
-//                        currentPath.removeRange(index + 1, currentPath.size)
-//                    }
+                    onClick = onClick
                 ) {
-
                     Text(
                         text = folderName,
                         fontSize = 18.sp,
@@ -62,5 +54,4 @@ fun FolderBreadcrumb(currentPath: List<String>, onClick: () -> Unit) {
             }
         }
     }
-
 }

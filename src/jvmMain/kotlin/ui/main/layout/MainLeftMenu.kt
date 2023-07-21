@@ -4,11 +4,14 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key.Companion.T
 import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.onPointerEvent
 import androidx.compose.ui.res.painterResource
@@ -96,12 +99,12 @@ fun buttonForPhoneOrIPad(cdButtonInfos: List<CDButtonInfo>) {
     )
     {
         for (buttonInfo in cdButtonInfos) {
-            Button(
+            TextButton(
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = AppColorsProvider.current.background,
                     contentColor = AppColorsProvider.current.firstText
                 ),
-                border = BorderStroke(width = 1.dp, color = AppColorsProvider.current.card),
+                border = BorderStroke(width = 1.dp, color = Color(0xFFDEDFE1)),
                 onClick = { }
             ) {
                 Icon(

@@ -27,7 +27,7 @@ fun progressbar(modifier: Modifier = Modifier, value: Float) {
     ) {
         Row(modifier = Modifier.absolutePadding(left = 14.dp)) {
             Text(
-                text = "528G/12.47T",
+                text = "528GB/12.47TB",
                 color = AppColorsProvider.current.firstText,
                 modifier = modifier.padding(end = 16.dp),
                 fontSize = 12.sp
@@ -42,9 +42,9 @@ fun progressbar(modifier: Modifier = Modifier, value: Float) {
         LinearProgressIndicator(
             modifier=Modifier.height(6.dp).absolutePadding(left = 10.dp, right = 16.dp),
             progress = value,
-            color = Color.Blue,
+            color = Color(0xFF647DfD),
             strokeCap = StrokeCap.Round,
-            backgroundColor = Color.Gray
+            backgroundColor = Color(0xFFDEDFE1)
         )
     }
 }
