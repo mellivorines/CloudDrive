@@ -156,7 +156,7 @@ fun ListScreen(listItems: List<ListItem>) {
 @OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
 @Composable
 fun ListItemView(item: ListItem, onClick: (title: Any) -> Unit) {
-    val cdPageAddDropdownMenu = CDMenuInfos.CD_PAGE_ADD_DROPDOWN_MENU
+    val cdPageAddDropdownMenu = CDMenuInfos.PAGE_ADD_DROPDOWN_MENU
     val background = AppColorsProvider.current.card
     val card = AppColorsProvider.current.background
     var color by remember { mutableStateOf(background) }

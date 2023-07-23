@@ -27,7 +27,7 @@ fun main() = application {
     PreComposeWindow(
         state = windowState,
         onCloseRequest = ::exitApplication,
-        undecorated = isMacOSX(),
+        undecorated = !isMacOSX(),
         title = ""
     ) {
         //设置最小尺寸

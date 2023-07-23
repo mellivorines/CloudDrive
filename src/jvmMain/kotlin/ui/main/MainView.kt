@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import ui.main.layout.MainLeftMenu
-import ui.main.layout.MainRightContainer
+import ui.main.layout.LeftMenu
+import ui.main.layout.RightContainer
 
 
 /**
@@ -24,8 +24,8 @@ fun MainView() {
             modifier = Modifier.weight(1f),
         ) {
             Row(modifier = Modifier.fillMaxSize()) {
-                MainLeftMenu()
-                MainRightContainer()
+                LeftMenu()
+                RightContainer()
             }
         }
     }

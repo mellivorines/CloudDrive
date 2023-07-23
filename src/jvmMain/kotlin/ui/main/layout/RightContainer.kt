@@ -17,7 +17,7 @@ import ui.theme.AppColorsProvider
  * @since 2023/6/2
  */
 @Composable
-fun MainRightContainer() {
+fun RightContainer() {
     Box(modifier = Modifier.fillMaxSize().background(color = AppColorsProvider.current.pure)) {
         Spacer(
             modifier = Modifier.fillMaxWidth().height(50.dp)

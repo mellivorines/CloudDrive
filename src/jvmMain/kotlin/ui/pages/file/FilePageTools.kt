@@ -1,6 +1,5 @@
 package ui.pages.file
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -31,7 +30,7 @@ import ui.theme.AppColorsProvider
  */
 @Composable
 fun FilePageTools() {
-    val cdPageAddDropdownMenu = CDMenuInfos.CD_PAGE_ADD_DROPDOWN_MENU
+    val cdPageAddDropdownMenu = CDMenuInfos.PAGE_ADD_DROPDOWN_MENU
     val currentPath = remember { mutableStateListOf("文件", "ada", "duahda", "ufgasd") }
 
     Row(

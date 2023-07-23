@@ -14,9 +14,13 @@ import java.io.File
 object AppConfig {
 
     val topBarHeight = 50.dp
+    val menuBarMaxWidth = 200.dp
+    val menuBarMinWidth = 60.dp
     val windowMinWidth = 1000.dp
     val windowMinHeight = 640.dp
-    val fullscreen = false
+    val basePadding = 10.dp
+
+    const val roundedPercent = 15
 
     // 应用缓存目录
     val cacheRootDir = System.getProperty("user.home") + File.separator + "Library" + File.separator + "CloudDrive"
