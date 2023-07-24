@@ -27,7 +27,8 @@ fun main() = application {
     PreComposeWindow(
         state = windowState,
         onCloseRequest = ::exitApplication,
-        undecorated = !isMacOSX(),
+        undecorated = isMacOSX(),
+        icon = painterResource("icons/file/Ai.svg"),
         title = ""
     ) {
         //设置最小尺寸
