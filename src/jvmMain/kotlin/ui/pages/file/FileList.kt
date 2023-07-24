@@ -19,7 +19,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.onPointerEvent
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.DpOffset
@@ -29,6 +28,7 @@ import base.AppConfig
 import model.CDMenuInfos
 import ui.pages.PageDropdownMenuItem
 import ui.theme.AppColorsProvider
+import utils.FileUtil.getFileIcon
 
 
 /**
@@ -195,9 +195,9 @@ fun ListItemView(item: ListItem, onClick: (title: Any) -> Unit) {
                     modifier = Modifier.width(50.dp)
                 ) {
                     Icon(
-                        if (item.type != 1) painterResource("icons/content/file/folder.svg") else painterResource("icons/menu/menu_file.svg"),
+                        getFileIcon(item.type),
                         contentDescription = "文件类型图标",
-                        tint = Color(0xFF647DfD)
+                        tint = Color.Unspecified
                     )
                 }
                 Box(
@@ -263,18 +263,18 @@ fun ListItemView(item: ListItem, onClick: (title: Any) -> Unit) {
 }
 
 val listItems = listOf(
-    ListItem("File 1", "2022-05-30 12:35:17", "20 MB", 1),
+    ListItem("File 1", "2022-05-30 12:35:17", "20 MB", 0),
     ListItem("File 2", "2022-05-29 09:42:05", "15 MB", 1),
     ListItem("File 3", "2022-05-28 16:50:22", "10 MB", 2),
-    ListItem("File 4", "2022-05-28 16:50:22", "10 MB", 2),
-    ListItem("File 5", "2022-05-28 16:50:22", "10 MB", 2),
-    ListItem("File 6", "2022-05-28 16:50:22", "10 MB", 2),
-    ListItem("File 7", "2022-05-28 16:50:22", "10 MB", 2),
-    ListItem("File 8", "2022-05-28 16:50:22", "10 MB", 2),
-    ListItem("File 9", "2022-05-28 16:50:22", "10 MB", 2),
-    ListItem("File 10", "2022-05-28 16:50:22", "10 MB", 2),
-    ListItem("File 11", "2022-05-28 16:50:22", "10 MB", 2),
-    ListItem("File 12", "2022-05-28 16:50:22", "10 MB", 2),
+    ListItem("File 4", "2022-05-28 16:50:22", "10 MB", 3),
+    ListItem("File 5", "2022-05-28 16:50:22", "10 MB", 4),
+    ListItem("File 6", "2022-05-28 16:50:22", "10 MB", 5),
+    ListItem("File 7", "2022-05-28 16:50:22", "10 MB", 6),
+    ListItem("File 8", "2022-05-28 16:50:22", "10 MB", 7),
+    ListItem("File 9", "2022-05-28 16:50:22", "10 MB", 8),
+    ListItem("File 10", "2022-05-28 16:50:22", "10 MB", 9),
+    ListItem("File 11", "2022-05-28 16:50:22", "10 MB", 10),
+    ListItem("File 12", "2022-05-28 16:50:22", "10 MB", 11),
 )
 
 

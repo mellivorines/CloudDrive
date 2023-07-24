@@ -1,6 +1,7 @@
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
@@ -10,25 +11,27 @@ import moe.tlaster.precompose.PreComposeWindow
 import moe.tlaster.precompose.navigation.rememberNavigator
 import org.succlz123.lib.imageloader.core.ImageLoader
 import router.CDNavigatorManager
+import ui.main.MainView
 import ui.theme.AppTheme
 import ui.theme.themeTypeState
-import ui.main.MainView
 import utils.EnvUtil
 import java.awt.Dimension
 import java.io.File
 
 
-
 fun main() = application {
     initImageLoader()
     //设置窗口最小尺寸以及初始位置
-    val windowState = rememberWindowState(size = DpSize(AppConfig.windowMinWidth, AppConfig.windowMinHeight), position = WindowPosition.Aligned(
-        Alignment.Center))
+    val windowState = rememberWindowState(
+        size = DpSize(AppConfig.windowMinWidth, AppConfig.windowMinHeight), position = WindowPosition.Aligned(
+            Alignment.Center
+        )
+    )
     PreComposeWindow(
         state = windowState,
         onCloseRequest = ::exitApplication,
-        undecorated = isMacOSX(),
-        icon = painterResource("icons/file/Ai.svg"),
+        undecorated = EnvUtil.isLinux(),
+        icon = painterResource("icons/app/app.svg"),
         title = ""
     ) {
         //设置最小尺寸
@@ -56,8 +59,4 @@ private fun initImageLoader() {
     ImageLoader.configuration(rootDirectory = File(AppConfig.cacheRootDir))
 }
 
-private fun isMacOSX(): Boolean {
-    val osName = System.getProperty("os.name")
-    return "OS X" == osName || "Mac OS X" == osName
-}
 

@@ -3,7 +3,7 @@ package utils
 import java.util.*
 
 object EnvUtil {
-    val osName = System.getProperty("os.name", "generic")
+    private val osName: String = System.getProperty("os.name", "generic")
 
     fun isMac() = osName.lowercase(Locale.getDefault()).contains("mac")
 

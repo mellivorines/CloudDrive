@@ -4,7 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import base.AppConfig
 import router.CDGraph
 import ui.theme.AppColorsProvider
 
@@ -20,7 +20,7 @@ import ui.theme.AppColorsProvider
 fun RightContainer() {
     Box(modifier = Modifier.fillMaxSize().background(color = AppColorsProvider.current.pure)) {
         Spacer(
-            modifier = Modifier.fillMaxWidth().height(50.dp)
+            modifier = Modifier.fillMaxWidth().height(AppConfig.topBarHeight)
                 .background(AppColorsProvider.current.topBarColor)
         )
         CDGraph()

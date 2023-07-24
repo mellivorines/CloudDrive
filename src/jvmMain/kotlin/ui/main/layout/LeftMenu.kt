@@ -62,9 +62,9 @@ fun LeftMenu() {
             enabled = true,
         ) {
             Icon(
-                painterResource("icons/file/Ai.svg"),
+                painterResource("icons/app/app.svg"),
                 contentDescription = "title",
-                tint = AppColorsProvider.current.firstIcon
+                tint = Color.Unspecified
             )
         }
         CDMenu(width)
@@ -152,7 +152,7 @@ private fun CDMenuItem(
                         painterResource(iconPath),
                         contentDescription = title,
                         modifier = Modifier.padding(AppConfig.basePadding).size(AppConfig.topBarHeight / 2),
-                        tint = AppColorsProvider.current.firstIcon
+                        tint = Color.Unspecified
                     )
                 }
                 Box(modifier = Modifier.height(AppConfig.topBarHeight), contentAlignment = Alignment.Center) {
