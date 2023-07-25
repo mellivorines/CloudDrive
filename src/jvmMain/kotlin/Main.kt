@@ -11,9 +11,9 @@ import moe.tlaster.precompose.PreComposeWindow
 import moe.tlaster.precompose.navigation.rememberNavigator
 import org.succlz123.lib.imageloader.core.ImageLoader
 import router.CDNavigatorManager
-import ui.main.MainView
-import ui.theme.AppTheme
-import ui.theme.themeTypeState
+import ui.layout.MainView
+import theme.AppTheme
+import theme.themeTypeState
 import utils.EnvUtil
 import java.awt.Dimension
 import java.io.File

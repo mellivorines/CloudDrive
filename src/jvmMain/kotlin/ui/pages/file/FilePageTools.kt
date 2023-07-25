@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import model.CDMenuInfos
 import ui.pages.PageDropdownMenuItem
-import ui.theme.AppColorsProvider
+import theme.AppColorsProvider
 
 
 /**

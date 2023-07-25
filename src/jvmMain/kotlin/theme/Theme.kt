@@ -1,4 +1,4 @@
-package ui.theme
+package theme
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.TweenSpec
@@ -6,9 +6,9 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.MaterialTheme.shapes
 import androidx.compose.runtime.*
-import ui.theme.color.AppColors
-import ui.theme.color.palette.dark.DarkColorPalette
-import ui.theme.color.palette.light.*
+import theme.color.AppColors
+import theme.color.palette.dark.DarkColorPalette
+import theme.color.palette.light.*
 
 
 // 夜间模式

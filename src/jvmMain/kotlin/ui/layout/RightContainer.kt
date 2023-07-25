@@ -1,4 +1,4 @@
-package ui.main.layout
+package ui.layout
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import base.AppConfig
 import router.CDGraph
-import ui.theme.AppColorsProvider
+import theme.AppColorsProvider
 
 
 /**

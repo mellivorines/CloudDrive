@@ -26,8 +26,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import base.AppConfig
 import model.CDMenuInfos
+import model.CDMenuInfos.FILE_INFO
+import model.FileInfo
 import ui.pages.PageDropdownMenuItem
-import ui.theme.AppColorsProvider
+import theme.AppColorsProvider
 import utils.FileUtil.getFileIcon
 
 
@@ -40,7 +42,7 @@ import utils.FileUtil.getFileIcon
  */
 @Composable
 fun FileList() {
-    ListScreen(listItems = listItems)
+    ListScreen(fileInfos = FILE_INFO)
 }
 
 @Composable
@@ -102,24 +104,24 @@ fun SortableColumn(title: String, sortColumn: (String) -> Unit, columnName: Stri
  * 列图
  */
 @Composable
-fun ListScreen(listItems: List<ListItem>) {
+fun ListScreen(fileInfos: List<FileInfo>) {
     val sortDescend by remember { mutableStateOf(false) }
     var sortColumn by remember { mutableStateOf("name") }
 
-    val sortedList = remember(listItems, sortColumn) {
+    val sortedList = remember(fileInfos, sortColumn) {
         if (sortDescend) {
             when (sortColumn) {
-                "name" -> listItems.sortedByDescending { it.name }
-                "createdTime" -> listItems.sortedByDescending { it.createdTime }
-                "size" -> listItems.sortedByDescending { it.size }
-                else -> listItems
+                "name" -> fileInfos.sortedByDescending { it.name }
+                "createdTime" -> fileInfos.sortedByDescending { it.createdTime }
+                "size" -> fileInfos.sortedByDescending { it.size }
+                else -> fileInfos
             }
         } else {
             when (sortColumn) {
-                "name" -> listItems.sortedBy { it.name }
-                "createdTime" -> listItems.sortedBy { it.createdTime }
-                "size" -> listItems.sortedBy { it.size }
-                else -> listItems
+                "name" -> fileInfos.sortedBy { it.name }
+                "createdTime" -> fileInfos.sortedBy { it.createdTime }
+                "size" -> fileInfos.sortedBy { it.size }
+                else -> fileInfos
             }
         }
 
@@ -155,7 +157,7 @@ fun ListScreen(listItems: List<ListItem>) {
  */
 @OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
 @Composable
-fun ListItemView(item: ListItem, onClick: (title: Any) -> Unit) {
+fun ListItemView(item: FileInfo, onClick: (title: Any) -> Unit) {
     val cdPageAddDropdownMenu = CDMenuInfos.PAGE_ADD_DROPDOWN_MENU
     val background = AppColorsProvider.current.card
     val card = AppColorsProvider.current.background
@@ -259,28 +261,4 @@ fun ListItemView(item: ListItem, onClick: (title: Any) -> Unit) {
             )
         }
     }
-
 }
-
-val listItems = listOf(
-    ListItem("File 1", "2022-05-30 12:35:17", "20 MB", 0),
-    ListItem("File 2", "2022-05-29 09:42:05", "15 MB", 1),
-    ListItem("File 3", "2022-05-28 16:50:22", "10 MB", 2),
-    ListItem("File 4", "2022-05-28 16:50:22", "10 MB", 3),
-    ListItem("File 5", "2022-05-28 16:50:22", "10 MB", 4),
-    ListItem("File 6", "2022-05-28 16:50:22", "10 MB", 5),
-    ListItem("File 7", "2022-05-28 16:50:22", "10 MB", 6),
-    ListItem("File 8", "2022-05-28 16:50:22", "10 MB", 7),
-    ListItem("File 9", "2022-05-28 16:50:22", "10 MB", 8),
-    ListItem("File 10", "2022-05-28 16:50:22", "10 MB", 9),
-    ListItem("File 11", "2022-05-28 16:50:22", "10 MB", 10),
-    ListItem("File 12", "2022-05-28 16:50:22", "10 MB", 11),
-)
-
-
-data class ListItem(
-    val name: String,
-    val createdTime: String,
-    val size: String,
-    val type: Int
-)

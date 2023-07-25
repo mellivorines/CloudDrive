@@ -1,7 +1,7 @@
-package ui.theme.color.palette.dark
+package theme.color.palette.dark
 
 import androidx.compose.ui.graphics.Color
-import ui.theme.color.AppColors
+import theme.color.AppColors
 
 /**
  * @Description:默认黑色主题

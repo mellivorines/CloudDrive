@@ -1,21 +1,21 @@
-package ui.theme.color.palette.light
+package theme.color.palette.light
 
 import androidx.compose.ui.graphics.Color
-import ui.theme.color.AppColors
+import theme.color.AppColors
 
 /**
- * @Description:蓝色主题
+ * @Description:黄色主题
  *
  * @author lilinxi
  * @version 1.0.0
  * @since 2023/5/31
  */
-val BlueColorPalette = AppColors(
+val YellowColorPalette = AppColors(
     topBar = Color(0xFFF3F3F3),
     pure = Color(0xFFFFFFFF),
-    primary = Color(0xFF3050EE),
-    primaryVariant = Color(0xFF102DB9),
-    secondary = Color(0xFF789BF1),
+    primary = Color(0xFFFFF143),
+    primaryVariant = Color(0xFFC7B917),
+    secondary = Color(0xFFF8F8AF),
     background = Color(0xFFEEEEEE),
     firstText = Color(0xFF333333),
     secondText = Color(0xFF666666),

@@ -1,21 +1,20 @@
-package ui.theme.color.palette.light
+package theme.color.palette.light
 
 import androidx.compose.ui.graphics.Color
-import ui.theme.color.AppColors
-
+import theme.color.AppColors
 /**
- * @Description:橙色主题
+ * @Description:默认主题
  *
  * @author lilinxi
  * @version 1.0.0
  * @since 2023/5/31
  */
-val OriginColorPalette = AppColors(
+val DefaultColorPalette = AppColors(
     topBar = Color(0xFFF3F3F3),
     pure = Color(0xFFFFFFFF),
-    primary = Color(0xFFFF6633),
-    primaryVariant = Color(0xFFD6410F),
-    secondary = Color(0xFFF3906F),
+    primary = Color(0xFFF0484E),
+    primaryVariant = Color(0xFFEC3037),
+    secondary = Color(0xFFF0888C),
     background = Color(0xFFEEEEEE),
     firstText = Color(0xFF333333),
     secondText = Color(0xFF666666),

@@ -1,4 +1,4 @@
-package ui.theme.color
+package theme.color
 
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue

@@ -1,7 +1,7 @@
-package ui.theme.color.palette.light
+package theme.color.palette.light
 
 import androidx.compose.ui.graphics.Color
-import ui.theme.color.AppColors
+import theme.color.AppColors
 
 /**
  * @Description:绿色主题

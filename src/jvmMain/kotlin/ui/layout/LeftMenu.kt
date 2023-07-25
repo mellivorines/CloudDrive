@@ -1,4 +1,4 @@
-package ui.main.layout
+package ui.layout
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
@@ -26,7 +26,7 @@ import model.MenuInfo
 import model.CDMenuInfos.MENU_INFOS
 import moe.tlaster.precompose.navigation.NavOptions
 import router.CDNavigatorManager.navigator
-import ui.theme.AppColorsProvider
+import theme.AppColorsProvider
 
 
 /**

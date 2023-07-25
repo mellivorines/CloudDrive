@@ -1,20 +1,20 @@
-package ui.theme.color.palette.light
+package theme.color.palette.light
 
 import androidx.compose.ui.graphics.Color
-import ui.theme.color.AppColors
+import theme.color.AppColors
 /**
- * @Description:默认主题
+ * @Description:紫色主题
  *
  * @author lilinxi
  * @version 1.0.0
  * @since 2023/5/31
  */
-val DefaultColorPalette = AppColors(
+val PurpleColorPalette = AppColors(
     topBar = Color(0xFFF3F3F3),
     pure = Color(0xFFFFFFFF),
-    primary = Color(0xFFF0484E),
-    primaryVariant = Color(0xFFEC3037),
-    secondary = Color(0xFFF0888C),
+    primary = Color(0xFFEE3DEE),
+    primaryVariant = Color(0xFFB917B9),
+    secondary = Color(0xFFEC8FEC),
     background = Color(0xFFEEEEEE),
     firstText = Color(0xFF333333),
     secondText = Color(0xFF666666),

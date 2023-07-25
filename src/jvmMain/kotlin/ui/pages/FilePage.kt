@@ -12,7 +12,7 @@ import model.PageAddDropdownMenu
 import ui.pages.file.FileList
 import ui.pages.file.FilePageTools
 import ui.pages.file.ListForFile
-import ui.theme.AppColorsProvider
+import theme.AppColorsProvider
 
 
 /**
