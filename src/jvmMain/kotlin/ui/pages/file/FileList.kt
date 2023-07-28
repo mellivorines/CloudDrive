@@ -3,7 +3,6 @@ package ui.pages.file
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.DropdownMenu
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -21,14 +20,13 @@ import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.onPointerEvent
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import model.CDMenuInfos
 import model.CDMenuInfos.FILE_INFO
 import model.FileInfo
 import theme.AppColorsProvider
-import ui.pages.PageDropdownMenuItem
+import ui.components.CustomizeDropdownMenu
 import utils.FileUtil.getFileIcon
 
 
@@ -224,20 +222,12 @@ fun ListItemView(item: FileInfo, onClick: (title: Any) -> Unit) {
                         )
                     }
                     //更多操作菜单
-                    DropdownMenu(
-                        modifier = Modifier.border(
-                            width = 10.dp,
-                            color = AppColorsProvider.current.card,
-                            shape = RoundedCornerShape(10.dp)
-                        ).background(AppColorsProvider.current.card),
-                        expanded = showChange,
-                        offset = DpOffset(40.dp, (-20).dp),
-                        onDismissRequest = { showChange = false }
+                    //自定义
+                    CustomizeDropdownMenu(
+                        cdPageAddDropdownMenu,
+                        showChange
                     ) {
-                        //更多操作菜单项
-                        cdPageAddDropdownMenu.forEach { pageAddDropdownMenu ->
-                            PageDropdownMenuItem(pageAddDropdownMenu)
-                        }
+                        showChange = false
                     }
                 }
 

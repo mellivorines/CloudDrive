@@ -1,10 +1,8 @@
 package ui.pages.file
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.DropdownMenu
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
@@ -14,11 +12,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import model.CDMenuInfos
 import theme.AppColorsProvider
-import ui.pages.PageDropdownMenuItem
+import ui.components.CustomizeDropdownMenu
 
 
 /**
@@ -83,19 +80,12 @@ fun FilePageTools() {
                         )
                     }
                     //添加按钮菜单操作
-                    DropdownMenu(
-                        modifier = Modifier.border(
-                            width = 10.dp,
-                            color = AppColorsProvider.current.card,
-                            shape = RoundedCornerShape(10.dp)
-                        ).background(AppColorsProvider.current.card),
-                        expanded = showAdd,
-                        offset = DpOffset(40. dp, (-20).dp),
-                        onDismissRequest = { showAdd = false }
+
+                    CustomizeDropdownMenu(
+                        cdPageAddDropdownMenu,
+                        showAdd
                     ) {
-                        cdPageAddDropdownMenu.forEach { pageAddDropdownMenu ->
-                            PageDropdownMenuItem(pageAddDropdownMenu)
-                        }
+                        showAdd = false
                     }
                 }
 
