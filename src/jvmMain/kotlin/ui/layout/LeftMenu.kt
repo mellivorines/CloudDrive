@@ -50,7 +50,7 @@ fun LeftMenu() {
             modifier = Modifier
                 .height(AppConfig.topBarHeight * 2)
                 .width(width.dp)
-                .padding(top = AppConfig.topBarHeight, start = 20.dp, end = 20.dp)
+                .padding(top = AppConfig.topBarHeight)
         ) {
             IconButton(
                 onClick = {
