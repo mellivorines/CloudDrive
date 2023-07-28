@@ -24,12 +24,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import base.AppConfig
 import model.CDMenuInfos
 import model.CDMenuInfos.FILE_INFO
 import model.FileInfo
-import ui.pages.PageDropdownMenuItem
 import theme.AppColorsProvider
+import ui.pages.PageDropdownMenuItem
 import utils.FileUtil.getFileIcon
 
 
@@ -224,24 +223,24 @@ fun ListItemView(item: FileInfo, onClick: (title: Any) -> Unit) {
                             tint = AppColorsProvider.current.firstIcon
                         )
                     }
-                }
-
-                //更多操作菜单
-                DropdownMenu(
-                    modifier = Modifier.border(
-                        width = 10.dp,
-                        color = AppColorsProvider.current.card,
-                        shape = RoundedCornerShape(10.dp)
-                    ).background(AppColorsProvider.current.card),
-                    expanded = showChange,
-                    offset = DpOffset((AppConfig.windowMinWidth / 2), 0.dp),
-                    onDismissRequest = { showChange = false }
-                ) {
-                    //更多操作菜单项
-                    cdPageAddDropdownMenu.forEach { pageAddDropdownMenu ->
-                        PageDropdownMenuItem(pageAddDropdownMenu)
+                    //更多操作菜单
+                    DropdownMenu(
+                        modifier = Modifier.border(
+                            width = 10.dp,
+                            color = AppColorsProvider.current.card,
+                            shape = RoundedCornerShape(10.dp)
+                        ).background(AppColorsProvider.current.card),
+                        expanded = showChange,
+                        offset = DpOffset(40.dp, (-20).dp),
+                        onDismissRequest = { showChange = false }
+                    ) {
+                        //更多操作菜单项
+                        cdPageAddDropdownMenu.forEach { pageAddDropdownMenu ->
+                            PageDropdownMenuItem(pageAddDropdownMenu)
+                        }
                     }
                 }
+
 
             }
         }

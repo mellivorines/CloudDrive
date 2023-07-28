@@ -17,8 +17,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import model.CDMenuInfos
-import ui.pages.PageDropdownMenuItem
 import theme.AppColorsProvider
+import ui.pages.PageDropdownMenuItem
 
 
 /**
@@ -66,35 +66,39 @@ fun FilePageTools() {
                 }
                 Spacer(modifier = Modifier.width(20.dp))
                 //添加按钮
-                IconButton(
-                    onClick = { showAdd = !showAdd },
-                    modifier = Modifier
-                        .background(Color(0xFF647DfD), shape = RoundedCornerShape(50))
-                        .size(30.dp)
+                Box {
 
-                ) {
-                    Icon(
-                        Icons.Default.Add,
-                        contentDescription = "添加",
-                        modifier = Modifier.size(20.dp),
-                        tint = Color.White
-                    )
-                }
-                //添加按钮菜单操作
-                DropdownMenu(
-                    modifier = Modifier.border(
-                        width = 10.dp,
-                        color = AppColorsProvider.current.card,
-                        shape = RoundedCornerShape(10.dp)
-                    ).background(AppColorsProvider.current.card),
-                    expanded = showAdd,
-                    offset = DpOffset((50).dp, 0.dp),
-                    onDismissRequest = { showAdd = false }
-                ) {
-                    cdPageAddDropdownMenu.forEach { pageAddDropdownMenu ->
-                        PageDropdownMenuItem(pageAddDropdownMenu)
+                    IconButton(
+                        onClick = { showAdd = !showAdd },
+                        modifier = Modifier
+                            .background(Color(0xFF647DfD), shape = RoundedCornerShape(50))
+                            .size(30.dp)
+
+                    ) {
+                        Icon(
+                            Icons.Default.Add,
+                            contentDescription = "添加",
+                            modifier = Modifier.size(20.dp),
+                            tint = Color.Unspecified
+                        )
+                    }
+                    //添加按钮菜单操作
+                    DropdownMenu(
+                        modifier = Modifier.border(
+                            width = 10.dp,
+                            color = AppColorsProvider.current.card,
+                            shape = RoundedCornerShape(10.dp)
+                        ).background(AppColorsProvider.current.card),
+                        expanded = showAdd,
+                        offset = DpOffset(40. dp, (-20).dp),
+                        onDismissRequest = { showAdd = false }
+                    ) {
+                        cdPageAddDropdownMenu.forEach { pageAddDropdownMenu ->
+                            PageDropdownMenuItem(pageAddDropdownMenu)
+                        }
                     }
                 }
+
             }
         }
 

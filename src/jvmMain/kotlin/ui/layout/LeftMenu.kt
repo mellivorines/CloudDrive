@@ -22,8 +22,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import base.AppConfig
-import model.MenuInfo
 import model.CDMenuInfos.MENU_INFOS
+import model.MenuInfo
 import moe.tlaster.precompose.navigation.NavOptions
 import router.CDNavigatorManager.navigator
 import theme.AppColorsProvider
@@ -46,26 +46,31 @@ fun LeftMenu() {
             .fillMaxHeight()
             .background(AppColorsProvider.current.background)
     ) {
-
-        IconButton(
-            onClick = {
-                width = if (width.dp == AppConfig.menuBarMaxWidth) {
-                    AppConfig.menuBarMinWidth.value.toInt()
-                } else {
-                    AppConfig.menuBarMaxWidth.value.toInt()
-                }
-            },
+        Box(
             modifier = Modifier
                 .height(AppConfig.topBarHeight * 2)
                 .width(width.dp)
-                .padding(top = AppConfig.topBarHeight),
-            enabled = true,
+                .padding(top = AppConfig.topBarHeight, start = 20.dp, end = 20.dp)
         ) {
-            Icon(
-                painterResource("icons/app/app.svg"),
-                contentDescription = "title",
-                tint = Color.Unspecified
-            )
+            IconButton(
+                onClick = {
+                    width = if (width.dp == AppConfig.menuBarMaxWidth) {
+                        AppConfig.menuBarMinWidth.value.toInt()
+                    } else {
+                        AppConfig.menuBarMaxWidth.value.toInt()
+                    }
+                },
+                modifier = Modifier
+                    .height(AppConfig.topBarHeight * 2)
+                    .width(width.dp),
+                enabled = true,
+            ) {
+                Icon(
+                    painterResource("icons/app/app.svg"),
+                    contentDescription = "title",
+                    tint = Color.Unspecified
+                )
+            }
         }
         CDMenu(width)
     }
